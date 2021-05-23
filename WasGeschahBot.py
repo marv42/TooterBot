@@ -28,9 +28,9 @@ def get_instance():
 def toot_daily():
     mastodon = get_instance()
     today = date.today()
-    # yesterday = today - timedelta(days=1)  # because of time zone differences
-    mastodon.toot(
-        f"Was geschah heute vor 100 Jahren?\nhttps://chroniknet.de/extra/was-war-am/?ereignisdatum={today.day}.{today.month}.{today.year}")
+    # TODO Check if site exists
+    mastodon.toot(f"""Was geschah heute vor 100 Jahren?
+https://chroniknet.de/extra/was-war-am/?ereignisdatum={today.day}.{today.month}.{today.year - 100}""")
 
 
 clientName = 'pytooterappwasgeschah'
