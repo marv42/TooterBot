@@ -1,6 +1,6 @@
 from credentials import username, password, clientId, clientSecret
 from mastodon import Mastodon
-from datetime import date, timedelta
+from datetime import date
 
 
 def register():
@@ -28,8 +28,7 @@ def get_instance():
 def toot_daily():
     mastodon = get_instance()
     today = date.today()
-    # TODO Check if site exists
-    mastodon.toot(f"""Was geschah heute vor 100 Jahren?
+    mastodon.toot(f"""Was geschah heute #vor100Jahren?
 https://chroniknet.de/extra/was-war-am/?ereignisdatum={today.day}.{today.month}.{today.year - 100}""")
 
 
