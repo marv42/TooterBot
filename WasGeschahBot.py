@@ -42,3 +42,4 @@ if __name__ == '__main__':
     # register()  # this only needs to be done once
     login()
     toot_daily()
+    Mastodon.revoke_access_token()
