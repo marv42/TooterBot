@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from credentials import username, password, clientId, clientSecret
 from mastodon import Mastodon
 from datetime import date
