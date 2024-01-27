@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
+from subprocess import Popen, PIPE
 
 from credentials import username, password, clientId, clientSecret
-from mastodon import Mastodon
+from mastodon import Mastodon, MastodonIllegalArgumentError
 from datetime import date
 
 
@@ -10,6 +11,7 @@ def register():
         clientName,
         api_base_url=apiBaseUrl,
         to_file=clientCredentialsFile)
+        # user_agent='Mozilla 5.0')
 
 
 def login():
@@ -42,6 +44,9 @@ userCredentialsFile = 'pytooter_usercred_wasgeschah.secret'
 
 if __name__ == '__main__':
     # register()  # this only needs to be done once
-    login()
+    try:
+        login()
+    except MastodonIllegalArgumentError as e:
+        Popen(["mail", "-s", "Failed to login", "marv42+wasgeschah@gmail.com"], stdin=PIPE, stdout=PIPE, stderr=PIPE).communicate(str(e.args).encode())
     toot_daily()
     get_instance().revoke_access_token()
