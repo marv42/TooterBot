@@ -16,7 +16,7 @@ def register():
 
 def login():
     mastodon = Mastodon(
-        client_id=clientId,  # TODO client_id=clientCredentialsFile,
+        client_id=clientCredentialsFile,
         client_secret=clientSecret,
         api_base_url=apiBaseUrl)
     version = mastodon.retrieve_mastodon_version()
