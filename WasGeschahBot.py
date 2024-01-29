@@ -10,13 +10,12 @@ def register():
     Mastodon.create_app(
         clientName,
         api_base_url=apiBaseUrl,
-        to_file=clientCredentialsFile)
-        # user_agent='Mozilla 5.0')
+        to_file=clientCredentialsFile)  # user_agent='Mozilla/5.0')
 
 
 def login():
     mastodon = Mastodon(
-        client_id=clientCredentialsFile,
+        client_id=clientId,
         client_secret=clientSecret,
         api_base_url=apiBaseUrl)
     version = mastodon.retrieve_mastodon_version()
@@ -47,6 +46,6 @@ if __name__ == '__main__':
     try:
         login()
     except MastodonIllegalArgumentError as e:
-        Popen(["mail", "-s", "Failed to login", "marv42+wasgeschah@gmail.com"], stdin=PIPE, stdout=PIPE, stderr=PIPE).communicate(str(e.args).encode())
+        Popen(["mail", "-s", "Failed to login", username], stdin=PIPE, stdout=PIPE, stderr=PIPE).communicate(str(e.args).encode())
     toot_daily()
     get_instance().revoke_access_token()
