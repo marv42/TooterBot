@@ -10,7 +10,8 @@ def register():
     Mastodon.create_app(
         clientName,
         api_base_url=apiBaseUrl,
-        to_file=clientCredentialsFile)  # user_agent='Mozilla/5.0')
+        to_file=clientCredentialsFile,
+        user_agent='Mozilla/5.0')
 
 
 def login():
