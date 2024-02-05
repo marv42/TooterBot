@@ -1,53 +1,31 @@
 #!/usr/bin/env python3
 import logging
-import re
 import sys
 from subprocess import Popen, PIPE
 
-from credentials import username, password, client_id, client_secret
+from credentials import username, password
 from mastodon import Mastodon, MastodonIllegalArgumentError
 from datetime import date
 
-
-API_BASE_URL = 'https://botsin.space'
+CLIENT_SECRET_FILE = 'pytooter_clientcred_wasgeschah.secret'
 
 
 def register():
-    client_credentials_file = 'pytooter_clientcred_wasgeschah.secret'
-    client_id, client_secret = Mastodon.create_app(
-        'pytooterappwasgeschah',
-        api_base_url=API_BASE_URL)
-        # to_file=client_credentials_file)
-        # user_agent='Mozilla/5.0')
-    write_client_credentials(client_id, client_secret)
-
-
-def write_client_credentials(id, secret):
-    with open("credentials.py", "r+") as f:
-        content = f.read()
-        f.seek(0)
-        content = re.sub('client_id.*', f"client_id = '{id}'", content)
-        content = re.sub('client_secret.*', f"client_secret = '{secret}'", content)
-        f.write(content)
-        f.truncate()
+    Mastodon.create_app(
+        'pytooterapp_wasgeschah',
+        api_base_url='https://botsin.space',
+        to_file=CLIENT_SECRET_FILE)
 
 
 def login():
-    mastodon = Mastodon(
-        client_id=client_id,
-        client_secret=client_secret,
-        api_base_url=API_BASE_URL)
+    mastodon = Mastodon(client_id=CLIENT_SECRET_FILE)
     version = mastodon.retrieve_mastodon_version()
     logging.debug(f"Mastodon version {version}")
     return mastodon.log_in(username, password)  # , to_file=userCredentialsFile)
 
 
 def get_instance(token):
-    return Mastodon(
-        client_id=client_id,
-        client_secret=client_secret,
-        access_token=token,
-        api_base_url=API_BASE_URL)
+    return Mastodon(client_id=CLIENT_SECRET_FILE, access_token=token)
 
 
 def toot_daily(token):
