@@ -1,8 +1,16 @@
 #!/bin/bash
 
-# TODO https://stackoverflow.com/a/246128
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# cf. https://stackoverflow.com/a/246128
+DIR=$(dirname "$(readlink -f "$0")")
+echo $DIR
+
+LOG_FILE=$DIR/WasGeschahBotDaily.log
+
+date >$LOG_FILE
+whoami >> $LOG_FILE
+echo $DIR >> $LOG_FILE
 
 cd $DIR
-source $DIR/venv/bin/activate
-$DIR/venv/bin/python3 $DIR/WasGeschahBot.py
+venv/bin/python -V >> $LOG_FILE 2>&1
+venv/bin/python -m pip list >> $LOG_FILE 2>&1
+venv/bin/python ./WasGeschahBot.py >> $LOG_FILE 2>&1
