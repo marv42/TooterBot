@@ -1,6 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# TODO https://stackoverflow.com/a/246128
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# cf. https://stackoverflow.com/a/246128
+DIR=$(dirname "$(readlink -f "$0")")
+echo $DIR
 
-python3 $DIR/CalvinAndHobbesBot.py
+LOG_FILE=$DIR/CalvinAndHobbesBotDaily.log
+
+date >$LOG_FILE
+whoami >> $LOG_FILE
+echo $DIR >> $LOG_FILE
+
+cd $DIR
+venv/bin/python -V >> $LOG_FILE 2>&1
+venv/bin/python -m pip list >> $LOG_FILE 2>&1
+venv/bin/python ./CalvinAndHobbesBot.py >> $LOG_FILE 2>&1

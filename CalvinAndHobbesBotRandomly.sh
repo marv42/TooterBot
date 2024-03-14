@@ -1,9 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # call this from cron.hourly
 
-# TODO https://stackoverflow.com/a/246128
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# cf. https://stackoverflow.com/a/246128
+DIR=$(dirname "$(readlink -f "$0")")
+echo $DIR
 
-RANDOM_NUMBER_FROM_0_TO_11=$(echo $((RANDOM % 12)))
-[ "$RANDOM_NUMBER_FROM_0_TO_11" -eq 0 ] && python3 $DIR/CalvinAndHobbesBot.py --random
+LOG_FILE=/dev/stdout # $DIR/CalvinAndHobbesBotRandomly.log
+
+date >$LOG_FILE
+whoami >> $LOG_FILE
+echo $DIR >> $LOG_FILE
+
+cd $DIR
+venv/bin/python -V >> $LOG_FILE 2>&1
+venv/bin/python -m pip list >> $LOG_FILE 2>&1
+
+RANDOM_NUMBER_FROM_0_TO_35=$(echo $((RANDOM % 36)))
+[ "$RANDOM_NUMBER_FROM_0_TO_35" -eq 0 ] && venv/bin/python ./CalvinAndHobbesBot.py --random >> $LOG_FILE 2>&1
