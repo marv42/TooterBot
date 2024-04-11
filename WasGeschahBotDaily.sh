@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # cf. https://stackoverflow.com/a/246128
 DIR=$(dirname "$(readlink -f "$0")")
