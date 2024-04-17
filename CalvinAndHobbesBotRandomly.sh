@@ -6,9 +6,9 @@
 DIR=$(dirname "$(readlink -f "$0")")
 echo $DIR
 
-LOG_FILE=/dev/stdout # $DIR/CalvinAndHobbesBotRandomly.log
+LOG_FILE=$DIR/CalvinAndHobbesBotRandomly.log
 
-date >$LOG_FILE
+date > $LOG_FILE
 whoami >> $LOG_FILE
 echo $DIR >> $LOG_FILE
 
