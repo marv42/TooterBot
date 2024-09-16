@@ -25,5 +25,5 @@ text = f"random #CalvinAndHobbes comic:\n{url}"
 if not parse_args().random:
     today = date.today()
     # yesterday = today - timedelta(days=1)  # because of time zone differences
-    text = f"daily #CalvinAndHobbes comic:\nhttps://www.gocomics.com/calvinandhobbes/{today.year}/{today.month}/{today.day}"
+    text = f"daily #CalvinAndHobbes comic:\nhttps://www.gocomics.com/calvinandhobbes/{today.year}/{today.month:02d}/{today.day:02d}"
 calvin_and_hobbes_bot.login_and_toot(username, password, text)
