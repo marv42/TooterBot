@@ -32,7 +32,7 @@ class TooterBot:
         logging.basicConfig(level=logging.DEBUG)
         try:
             access_token = self.login(username, password)
-            logging.debug(f"access_token: {access_token}")
+            # logging.debug(f"access_token: {access_token}")
             self.toot(access_token, text)
             self.get_instance(access_token).revoke_access_token()
         except MastodonIllegalArgumentError as e:
