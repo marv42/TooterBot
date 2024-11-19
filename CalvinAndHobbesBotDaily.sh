@@ -2,7 +2,7 @@
 
 # cf. https://stackoverflow.com/a/246128
 DIR=$(dirname "$(readlink -f "$0")")
-echo $DIR
+# echo $DIR
 
 LOG_FILE=$DIR/CalvinAndHobbesBotDaily.log
 

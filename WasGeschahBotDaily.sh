@@ -2,11 +2,11 @@
 
 # cf. https://stackoverflow.com/a/246128
 DIR=$(dirname "$(readlink -f "$0")")
-echo $DIR
+# echo $DIR
 
 LOG_FILE=$DIR/WasGeschahBotDaily.log
 
-date >$LOG_FILE
+date > $LOG_FILE
 whoami >> $LOG_FILE
 echo $DIR >> $LOG_FILE
 
