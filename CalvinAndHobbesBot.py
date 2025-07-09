@@ -4,7 +4,7 @@ import sys
 import urllib.request
 from datetime import date
 
-from calvin_and_hobbes_credentials import username, password
+from calvin_and_hobbes_credentials import access_token
 from TooterBot import TooterBot
 
 CLIENT_NAME = 'pytooterappcalvinandhobbes'
@@ -25,4 +25,4 @@ text = f"daily #CalvinAndHobbes comic:\nhttps://www.gocomics.com/calvinandhobbes
 if parse_args().random:
     url = urllib.request.urlopen('https://www.gocomics.com/random/calvinandhobbes').geturl()
     text = f"random #CalvinAndHobbes comic:\n{url}"
-calvin_and_hobbes_bot.login_and_toot(username, password, text)
+calvin_and_hobbes_bot.login_and_toot(access_token, text)

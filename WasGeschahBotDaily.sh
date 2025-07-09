@@ -11,6 +11,8 @@ whoami >> $LOG_FILE
 echo $DIR >> $LOG_FILE
 
 cd $DIR
-venv/bin/python -V >> $LOG_FILE 2>&1
+venv/bin/python --version >> $LOG_FILE 2>&1
+venv/bin/python -m pip install --upgrade pip >> $LOG_FILE 2>&1
+venv/bin/python -m pip install -r requirements.txt >> $LOG_FILE 2>&1
 venv/bin/python -m pip list >> $LOG_FILE 2>&1
 venv/bin/python ./WasGeschahBot.py >> $LOG_FILE 2>&1

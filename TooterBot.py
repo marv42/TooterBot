@@ -28,12 +28,12 @@ class TooterBot:
         mastodon = self.get_instance(access_token)
         mastodon.toot(text)
 
-    def login_and_toot(self, username, password, text):
+    def login_and_toot(self, access_token, text):
         logging.basicConfig(level=logging.DEBUG)
         try:
-            access_token = self.login(username, password)
+            # access_token = self.login(username, password)
             # logging.debug(f"access_token: {access_token}")
             self.toot(access_token, text)
-            self.get_instance(access_token).revoke_access_token()
+            # self.get_instance(access_token).revoke_access_token()
         except MastodonIllegalArgumentError as e:
             Popen(["mail", "-s", "Failed to login", username], stdin=PIPE, stdout=PIPE, stderr=PIPE).communicate(str(e.args).encode())

@@ -2,7 +2,7 @@
 import sys
 from datetime import date
 
-from was_geschah_credentials import username, password
+from was_geschah_credentials import access_token
 from TooterBot import TooterBot
 
 
@@ -15,4 +15,4 @@ was_geschah_bot = TooterBot(CLIENT_SECRET_FILE)
 today = date.today()
 text = f"""Was geschah heute #vor100Jahren?
 https://chroniknet.de/was-war-am/{today.day}.{today.month}.{today.year - 100}"""
-was_geschah_bot.login_and_toot(username, password, text)
+was_geschah_bot.login_and_toot(access_token, text)
