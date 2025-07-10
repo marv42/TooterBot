@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import argparse
-import sys
 import urllib.request
 from datetime import date
 
@@ -25,4 +24,4 @@ text = f"daily #CalvinAndHobbes comic:\nhttps://www.gocomics.com/calvinandhobbes
 if parse_args().random:
     url = urllib.request.urlopen('https://www.gocomics.com/random/calvinandhobbes').geturl()
     text = f"random #CalvinAndHobbes comic:\n{url}"
-calvin_and_hobbes_bot.login_and_toot(access_token, text)
+calvin_and_hobbes_bot.toot(access_token, text)
