@@ -1,12 +1,12 @@
-blurhash==1.1.4
-certifi==2025.7.9
-charset-normalizer==3.4.2
+blurhash==1.1.5
+certifi==2025.8.3
+charset-normalizer==3.4.3
 decorator==5.2.1
 idna==3.10
-Mastodon.py==1.8.1
+Mastodon.py==2.1.4
 ndg-httpsclient==0.5.1
 python-dateutil==2.8.2
 python-magic==0.4.27
-requests==2.32.4
+requests==2.32.5
 six==1.17.0
 urllib3==2.5.0
