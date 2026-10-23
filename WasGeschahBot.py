@@ -13,5 +13,6 @@ was_geschah_bot = TooterBot(CLIENT_SECRET_FILE)
 
 today = date.today()
 text = f"""Was geschah heute #vor100Jahren?
+
 https://chroniknet.de/was-war-am/{today.day}.{today.month}.{today.year - 100}"""
 was_geschah_bot.toot(access_token, text)

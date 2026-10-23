@@ -42,5 +42,5 @@ if parse_args().random:
     url = m.group(1)
     text = "random"
 
-text = f"{text} #CalvinAndHobbes comic:\n{url}"
+text = f"{text} #CalvinAndHobbes comic:\n\n{url}"
 calvin_and_hobbes_bot.toot(access_token, text)
